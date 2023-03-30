@@ -1,7 +1,7 @@
 resource "google_compute_backend_service" "backend_service" {
   name        = "backend-service"
   project     = var.project_id
-  region      = var.region
+#   region      = var.region
 
   backend {
     group = var.backend_instance_group_self_link
