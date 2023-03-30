@@ -1,5 +1,5 @@
 credentials_file = "credentials.json"
-project_id       = "terraform-demo-382210"
+project_id       = "graphite-space-382215"
 region           = "us-central1"
 zone             = "us-central1-a"
 image_name       = "debian-cloud/debian-11"
