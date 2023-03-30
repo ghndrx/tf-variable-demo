@@ -8,6 +8,9 @@ resource "google_compute_instance_group_manager" "instance_group" {
         name              = "webserver"
         instance_template = var.template_self_link
     }
-    
+
   target_size  = 2
+
+depends_on = [google_project_service.compute_engine_api]
+
 }

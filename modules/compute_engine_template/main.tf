@@ -22,4 +22,6 @@ resource "google_compute_instance_template" "template" {
   lifecycle {
     create_before_destroy = true
   }
+  depends_on = [google_project_service.compute_engine_api]
+
 }
