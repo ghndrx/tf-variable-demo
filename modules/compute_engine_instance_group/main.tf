@@ -11,6 +11,4 @@ resource "google_compute_instance_group_manager" "instance_group" {
 
   target_size  = 2
 
-depends_on = [google_project_service.compute_engine_api]
-
 }
