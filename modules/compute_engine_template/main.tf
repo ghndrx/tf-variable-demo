@@ -16,7 +16,7 @@ resource "google_compute_instance_template" "template" {
       // Ephemeral public IP address
     }
   }
-
+  tags = ["http-server"]
   metadata_startup_script = var.startup_script
 
   lifecycle {

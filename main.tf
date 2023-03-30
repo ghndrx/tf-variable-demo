@@ -5,12 +5,9 @@ provider "google" {
   zone        = var.zone
 }
 
-resource "google_project_service" "compute_engine_api" {
-  project = var.project_id
-  service = "compute.googleapis.com"
-
-  disable_dependent_services = true
-  disable_on_destroy         = false
+module "firewall_rule" {
+  source     = "./modules/firewall_rule"
+  project_id = var.project_id
 }
 
 module "compute_engine_template" {
