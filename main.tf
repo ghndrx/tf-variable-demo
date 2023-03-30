@@ -5,8 +5,8 @@ provider "google" {
   zone        = var.zone
 }
 
-module "firewall_rule" {
-  source     = "./modules/firewall_rule"
+module "firewall_rules" {
+  source     = "./modules/firewall_rules"
   project_id = var.project_id
 }
 
