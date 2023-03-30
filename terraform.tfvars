@@ -1,4 +1,4 @@
-credentials_file = "path/to/credentials.json"
+credentials_file = "credentials.json"
 project_id       = "terraform-demo-382210"
 region           = "us-central1"
 zone             = "us-central1-a"
