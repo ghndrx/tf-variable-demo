@@ -7,3 +7,4 @@ terraform.tfstate.backup
 terraform.tfstate
 .gitignore
 terraform-provider-google_v4.61.0_x5
+.terraform.tfstate.lock.info

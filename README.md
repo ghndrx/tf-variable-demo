@@ -9,7 +9,7 @@ Using the -var flag, you can pass variables directly to the terraform apply or t
 Example:
 
 
-```terraform apply -var="project_id=variable-tf-demo" -var="region=us-central1"```
+```terraform apply -var="project_id=variable-tf-demo" -var="region=us-central1" -var="zone=us-central1-f" -var="image_name=debian-cloud/debian-10" -var="instance_type=n1-standard-4"```
 
 Environment variables:
 Set Terraform variables using environment variables by following the naming convention TF_VAR_variable_name. This method is useful for storing sensitive data or when using CI/CD pipelines.
@@ -18,13 +18,29 @@ Example:
 
 
 ```
+export TF_VAR_credentials_file="credentials.json"
 export TF_VAR_project_id="variable-tf-demo"
 export TF_VAR_region="us-central1"
+export TF_VAR_zone="us-central1-a"
+export TF_VAR_image_name="debian-cloud/debian-11"
+export TF_VAR_instance_type="n1-standard-1"
 terraform apply
 ```
 
 Variable definition files (.tfvars):
 Use .tfvars or .tfvars.json files to store variable values. Terraform loads all such files in the working directory by default, or you can specify a file using the -var-file flag.
+Example (terraform.tfvars.json):
+
+```
+{
+  "credentials_file": "credentials.json",
+  "project_id": "variable-tf-demo",
+  "region": "us-central1",
+  "zone": "us-central1-a",
+  "image_name": "debian-cloud/debian-11",
+  "instance_type": "n1-standard-1"
+}
+```
 
 Example (terraform.tfvars):
 
