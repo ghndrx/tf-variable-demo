@@ -9,6 +9,6 @@ resource "google_compute_instance_group_manager" "instance_group" {
         instance_template = var.template_self_link
     }
 
-  target_size  = 2
+  target_size  = 3
 
 }
