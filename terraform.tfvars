@@ -1,5 +1,5 @@
 credentials_file = "credentials.json"
-project_id       = "variable-tf-demo"
+project_id       = "$PROJECT_ID"
 region           = "us-central1"
 zone             = "us-central1-a"
 image_name       = "debian-cloud/debian-11"
