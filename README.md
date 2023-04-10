@@ -9,7 +9,7 @@ Using the -var flag, you can pass variables directly to the terraform apply or t
 Example:
 
 
-terraform apply -var="project_id=variable-tf-demo" -var="region=us-central1"
+```terraform apply -var="project_id=variable-tf-demo" -var="region=us-central1"```
 
 Environment variables:
 Set Terraform variables using environment variables by following the naming convention TF_VAR_variable_name. This method is useful for storing sensitive data or when using CI/CD pipelines.
