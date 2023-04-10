@@ -1,3 +1,5 @@
+```export PROJECT_ID="your-project-id"```
+
 Terraform offers various methods to provide input variables, making it flexible and adaptable to different use cases. These methods include command-line flags, environment variables, variable definition files (including auto-loaded files), and default values in variable declarations.
 
 Auto-loaded variable definition files:
