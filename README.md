@@ -1,21 +1,17 @@
-Terraform offers various methods to provide input variables, making it flexible and adaptable to different use cases. These methods include command-line flags, environment variables, variable definition files (including auto-loaded files), and default values in variable declarations.
+Terraform offers various methods for providing input variables, each with a specific priority that determines the final value assignment. Understanding these priorities can help you choose the most suitable method for your needs and preferences.
 
-Auto-loaded variable definition files:
-Terraform automatically loads files with .auto.tfvars or .auto.tfvars.json extensions, without the need for the -var-file flag. They are loaded alphabetically, with later files potentially overwriting earlier ones.
-Example: Two .auto.tfvars files (a.auto.tfvars and b.auto.tfvars) contain different values for project_id. When you run terraform apply, Terraform loads both files, and the final project_id value is taken from b.auto.tfvars.
+Here is a summary of the variable input methods in order of priority, from highest to lowest:
 
-Command-line flags:
-Using the -var flag, you can pass variables directly to the terraform apply or terraform plan commands. This method is useful for passing sensitive data or for quick testing purposes.
+Command-line flags (-var):
+These flags have the highest priority, meaning that values provided using -var will override any other method.
 Example:
-
 
 ```terraform apply -var="project_id=$PROJECT_ID" -var="region=us-central1" -var="zone=us-central1-f" -var="image_name=debian-cloud/debian-10" -var="instance_type=n1-standard-4"```
 
-Environment variables:
-Set Terraform variables using environment variables by following the naming convention TF_VAR_variable_name. This method is useful for storing sensitive data or when using CI/CD pipelines.
+Environment variables (TF_VAR_):
+This method takes precedence over auto-loaded variable definition files, variable definition files specified with the -var-file flag, and default values in variable declarations.
 
 Example:
-
 
 ```
 export TF_VAR_credentials_file="credentials.json"
@@ -27,8 +23,12 @@ export TF_VAR_instance_type="n1-standard-1"
 terraform apply
 ```
 
-Variable definition files (.tfvars):
-Use .tfvars or .tfvars.json files to store variable values. Terraform loads all such files in the working directory by default, or you can specify a file using the -var-file flag.
+Auto-loaded variable definition files (.auto.tfvars or .auto.tfvars.json):
+Auto-loaded files have priority over variable definition files specified with the -var-file flag and default values in variable declarations.
+Example: Two .auto.tfvars files (a.auto.tfvars and b.auto.tfvars) contain different values for project_id. When you run terraform apply, Terraform loads both files, and the final project_id value is taken from b.auto.tfvars.
+
+Variable definition files specified with the -var-file flag (.tfvars or .tfvars.json):
+This method has a lower priority than auto-loaded variable definition files but takes precedence over default values in variable declarations.
 Example (terraform.tfvars.json):
 
 ```
@@ -52,9 +52,8 @@ zone             = "us-central1-a"
 image_name       = "debian-cloud/debian-11"
 instance_type    = "n1-standard-1"
 ```
-Default values in variable declarations:
-Provide default values for variables directly in the variable declaration block in your .tf files. If a value is not provided through any other method, the default value will be used.
-
+Default values in variable declarations (within .tf files):
+These values have the lowest priority and will only be used if no value is provided through any other method.
 Example (variables.tf):
 
 ```
@@ -66,4 +65,4 @@ variable "region" {
   default = "us-central1"
 }
 ```
-In summary, Terraform supports various methods to input variables, each with its own use case. You can choose the method that best suits your needs and preferences.
+In summary, Terraform supports various methods for inputting variables, each with a unique priority that determines the final value assignment. When working with Terraform, it's essential to consider these priorities to ensure the correct values are used during the execution of your Terraform configuration.
