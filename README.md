@@ -1,4 +1,6 @@
-Terraform offers various methods for providing input variables, each with a specific priority that determines the final value assignment. Understanding these priorities can help you choose the most suitable method for your needs and preferences.
+```export PROJECT_ID="your-project-id"```
+
+Terraform offers various methods to provide input variables, making it flexible and adaptable to different use cases. These methods include command-line flags, environment variables, variable definition files (including auto-loaded files), and default values in variable declarations.
 
 Here is a summary of the variable input methods in order of priority, from highest to lowest:
 
@@ -65,4 +67,4 @@ variable "region" {
   default = "us-central1"
 }
 ```
-In summary, Terraform supports various methods for inputting variables, each with a unique priority that determines the final value assignment. When working with Terraform, it's essential to consider these priorities to ensure the correct values are used during the execution of your Terraform configuration.
+In summary, Terraform supports various methods to input variables, each with its own use case. You can choose the method that best suits your needs and preferences.
